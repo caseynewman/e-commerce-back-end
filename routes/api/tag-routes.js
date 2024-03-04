@@ -40,6 +40,7 @@ router.post('/', async (req, res) => {
   try {
     const newTag = await Tag.create({
       tagId: req.body.id,
+      tagName: req.body.name,
     });
     res.status(200).json(newTag);
   } catch (err) {
@@ -65,7 +66,7 @@ router.delete('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(tagData);
+    res.status(200).json({ message: 'Tag has been deleted!'});
   } catch (err) {
     res.status(500).json(err);
   }
