@@ -40,6 +40,7 @@ router.post('/', async (req, res) => {
   try {
     const newCategory = await Category.create({
       categoryId: req.body.id,
+      categoryName: req.body.name,
     });
     res.status(200).json(newCategory);
   } catch (err) {
@@ -65,7 +66,7 @@ router.delete('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(categoryData);
+    res.status(200).json({ message: 'Category has been deleted!'});
   } catch (err) {
     res.status(500).json(err);
   }
